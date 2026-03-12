@@ -1,0 +1,13 @@
+version = 1
+
+[common]
+synced_files = []
+
+[[profiles]]
+name = "Personal"
+synced_files = [
+    ".config/kitty",
+    ".ssh/config",
+    ".zshrc",
+]
+packages = []

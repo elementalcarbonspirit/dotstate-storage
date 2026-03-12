@@ -1,0 +1,9 @@
+version = 1
+
+[common]
+synced_files = []
+
+[[profiles]]
+name = "Personal"
+synced_files = []
+packages = []

@@ -1,9 +1,14 @@
-version = 1
+version = 2
 
 [common]
 synced_files = []
 
 [[profiles]]
 name = "Personal"
-synced_files = []
+synced_files = [
+    ".bashrc",
+    ".config/nvim",
+    ".oh-my-zsh",
+    ".ssh/known_hosts",
+]
 packages = []

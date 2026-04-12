@@ -49,3 +49,14 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[1;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;36m'
+
+# History settings
+HISTFILE=~/.zsh_history          # Where to store history
+HISTSIZE=10000                   # Max number of commands in memory
+SAVEHIST=10000                   # Max number of commands saved to file
+
+setopt INC_APPEND_HISTORY        # Append immediately, not at shell exit
+setopt SHARE_HISTORY             # Share history across terminals
+setopt HIST_IGNORE_DUPS          # Don't record duplicate commands
+setopt HIST_FIND_NO_DUPS         # Don't show duplicates when searching
+alias vi=nvim

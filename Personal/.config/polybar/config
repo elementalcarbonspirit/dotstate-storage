@@ -1,0 +1,23 @@
+[module/timer-time]
+type = custom/script
+exec = ~/.config/timer/bin/polybar_timer.sh
+interval = 1
+click-left = ~/.config/timer/bin/polybar_timer.sh click
+format = <label>
+label = %output%
+
+[module/timer-break]
+type = custom/script
+exec = ~/.config/timer/bin/polybar_break.sh
+interval = 2
+click-left = ~/.config/timer/bin/polybar_break.sh click
+format = <label>
+label = %output%
+
+[module/timer-done]
+type = custom/script
+exec = ~/.config/timer/bin/polybar_done.sh
+interval = 2
+click-left = ~/.config/timer/bin/polybar_done.sh click
+format = <label>
+label = %output%

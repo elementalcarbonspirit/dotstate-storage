@@ -8,6 +8,9 @@ name = "Personal"
 synced_files = [
     ".config/i3",
     ".config/nvim",
+    ".config/polybar",
+    ".config/rofi",
+    ".config/timer",
     ".ssh",
     ".zshrc",
 ]

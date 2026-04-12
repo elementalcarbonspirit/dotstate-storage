@@ -1,0 +1,7 @@
+configuration {
+    show-icons:             false;
+    drun-display-format:    "{name}";
+    display-drun:           "";
+    display-window:         "";
+    kb-cancel:              "Escape";
+}

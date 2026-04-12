@@ -1,0 +1,170 @@
+# ~/.config/i3/config
+# Nord Theme + CachyOS Hyprland-style Keybindings
+
+set $mod Mod4
+# Launch Firefox with three tabs on workspace 1 (default workspace)
+exec --no-startup-id firefox "http://140.245.120.119:5000/dashboard" "https://emakicms.com/" "https://app.asana.com/1/801390702427/project/1206478217597190/board/1208014720221845"
+
+# Switch to workspace 2 and launch a terminal with mpv playing the YouTube playlist (paused)
+exec --no-startup-id i3-msg 'workspace 2; exec kitty -e mpv --no-video --pause "https://www.youtube.com/watch?v=VGF8FAV1eeM&list=PL4lOZ2U2jgnHPcZwFUEdVDWJb8mdoSy8s"'
+exec --no-startup-id i3-msg 'workspace 1'
+set $nord0  #2E3440
+set $nord1  #3B4252
+set $nord2  #434C5E
+set $nord3  #4C566A
+set $nord4  #D8DEE9
+set $nord6  #ECEFF4
+set $nord8  #88C0D0
+set $nord9  #81A1C1
+set $nord10 #5E81AC
+set $nord11 #BF616A
+
+font pango:JetBrainsMono Nerd Font 10
+
+exec_always --no-startup-id xset r rate 200 90
+
+exec_always --no-startup-id feh --bg-fill /mnt/7f1e8ebb-93ac-48eb-8138-42380cce3253/Wallpapers/paint.png
+exec_always --no-startup-id "sleep 1; /home/jellyjam/.local/bin/autotiling --splitratio 1.618"
+exec_always --no-startup-id export EDITOR=nvim
+gaps inner 8
+gaps outer 4
+smart_gaps on
+for_window [class="Xfce4-terminal"] floating disable
+# Terminal
+bindsym $mod+Return exec xfce4-terminal
+
+bindsym $mod+q kill
+bindsym $mod+e exec thunar
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+ctrl+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+bindsym $mod+x exec i3lock -c 2E3440
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym Left  resize shrink width 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Up    resize shrink height 10 px or 10 ppt
+    bindsym Down  resize grow height 10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bindsym $mod+b split h
+bindsym $mod+v split v
+bindsym $mod+Shift+f floating toggle
+bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+Shift+t layout toggle split
+bindsym $mod+t exec thunar
+bindsym $mod+p sticky toggle
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+a focus parent
+bindsym $mod+z focus child
+
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+bindsym $mod+ctrl+Right workspace next
+bindsym $mod+ctrl+Left  workspace prev
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+floating_modifier $mod
+
+# ── Window colors ──────────────────────────────────────────
+# Focused window: nordic blue border — clear signal
+# All others: flat grey — no dimming, no blur, just border contrast
+# class                 border   bg       text     indicator child_border
+client.focused          $nord8   $nord1   $nord6   $nord8    $nord8
+client.focused_inactive $nord3   $nord1   $nord4   $nord3    $nord3
+client.unfocused        $nord2   $nord1   $nord4   $nord2    $nord2
+client.urgent           $nord11  $nord11  $nord6   $nord11   $nord11
+client.placeholder      $nord0   $nord0   $nord4   $nord0    $nord0
+client.background       $nord0
+
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
+
+
+
+# Scratchpad notepad
+
+# Scratchpad notepad
+exec_always --no-startup-id ~/.config/polybar/colorblocks/launch.sh
+exec --no-startup-id greenclip daemon
+
+exec_always --no-startup-id xset r 99 100
+for_window [title="scratchpad-note"] floating enable, resize set 600 400, move position center
+bindsym $mod+n [title="scratchpad-note"] scratchpad show; exec --no-startup-id xfce4-terminal --title scratchpad-note -e "nvim ~/notes.md"
+
+bindsym Pause       exec --no-startup-id ~/.config/i3/scripts/screenshot.sh full
+bindsym Home        exec --no-startup-id ~/.config/i3/scripts/screenshot.sh pick
+bindsym Print       exec --no-startup-id ~/.config/i3/scripts/screenshot.sh region
+exec_always --no-startup-id dunst
+bindsym $mod+space exec --no-startup-id rofi -show drun -theme ~/.config/rofi/nord.rasi -no-config
+bindsym $mod+Tab exec --no-startup-id rofi -show window -theme ~/.config/rofi/nord.rasi -no-config
+
+bindsym F12 exec ~/.config/timer/bin/new_task_popup.sh
